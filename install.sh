@@ -31,6 +31,16 @@ mkdir -p "$BIN_DIR"
 echo -e "${YELLOW}[COPY] Installing files...${RESET}"
 cp -r ./* "$INSTALL_DIR"
 
+# ===== CONFIG INIT =====
+echo -e "${YELLOW}[CONF] Initializing configuration...${RESET}"
+
+if [[ ! -f "$INSTALL_DIR/plugin.conf" ]]; then
+    cp "$INSTALL_DIR/plugin.conf.example" "$INSTALL_DIR/plugin.conf"
+    echo -e "${GREEN}[CONF] plugin.conf created${RESET}"
+else
+    echo -e "${YELLOW}[CONF] plugin.conf already exists (skipped)${RESET}"
+fi
+
 # ===== PERMISSIONS =====
 echo -e "${YELLOW}[PERM] Setting executable permissions...${RESET}"
 
