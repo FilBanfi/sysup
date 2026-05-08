@@ -6,7 +6,7 @@ RED="\033[31m"
 YELLOW="\033[33m"
 RESET="\033[0m"
 
-VERSION="0.1"
+VERSION="1.0"
 
 INSTALL_DIR="$HOME/.local/share/sysup"
 BIN_DIR="$HOME/.local/bin"
