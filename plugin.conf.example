@@ -19,7 +19,7 @@
 
 # --- ARCH ---
 arch/pacman.sh=0
-arch/yay.sh=1
+arch/yay.sh=0
 
 # --- DEBIAN ---
 debian/apt.sh=0
@@ -29,6 +29,14 @@ fedora/dnf.sh=0
 fedora/copr.sh=0
 
 # --- OTHER ---
+
+# --- SYSUP ---
+# We suggest to not 
+# touch this section
+# to keep the auto
+# update feature
+sysup/update.sh=1
+sysup/template.sh=0
 
 # --- EXTRA TOOLS ---
 extra/appimage.sh=0
