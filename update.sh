@@ -7,7 +7,7 @@ YELLOW="\033[33m"
 RESET="\033[0m"
 
 APP_NAME="sysup"
-VERSION="0.1"
+VERSION="1.0"
 
 CONFIG_FILE="plugin.conf"
 MODULES_DIR="modules"
