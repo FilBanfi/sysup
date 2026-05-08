@@ -33,12 +33,20 @@ cp -r ./* "$INSTALL_DIR"
 
 # ===== PERMISSIONS =====
 echo -e "${YELLOW}[PERM] Setting executable permissions...${RESET}"
-chmod +x "$INSTALL_DIR/update.sh"
-find "$INSTALL_DIR/modules" -type f -name "*.sh" -exec chmod +x {} +
 
-# ===== SYMLINK =====
-echo -e "${YELLOW}[LINK] Creating command 'sysup'...${RESET}"
+chmod +x "$INSTALL_DIR/update.sh"
+chmod +x "$INSTALL_DIR/uninstall.sh"
+
+find "$INSTALL_DIR/modules" \
+    -type f \
+    -name "*.sh" \
+    -exec chmod +x {} +
+
+# ===== SYMLINKS =====
+echo -e "${YELLOW}[LINK] Creating commands...${RESET}"
+
 ln -sf "$INSTALL_DIR/update.sh" "$BIN_DIR/sysup"
+ln -sf "$INSTALL_DIR/uninstall.sh" "$BIN_DIR/sysup-remove"
 
 # ===== CHECK PATH =====
 if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
@@ -54,4 +62,7 @@ echo -e "${GREEN}======================================"
 echo -e "       INSTALLATION COMPLETED"
 echo -e "======================================${RESET}"
 echo ""
-echo "Run: sysup"
+
+echo "Commands:"
+echo "  sysup"
+echo "  sysup-remove"
