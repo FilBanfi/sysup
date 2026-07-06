@@ -24,8 +24,6 @@ echo ""
 # example:
 # sudo dnf upgrade -y
 
-COMMAND_HERE
-
 # ===== RESULT =====
 if [[ $? -eq 0 ]]; then
     echo ""
