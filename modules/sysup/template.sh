@@ -6,7 +6,7 @@ RED="\033[31m"
 YELLOW="\033[33m"
 RESET="\033[0m"
 
-VERSION="0.2.0"
+VERSION="0.2.1"
 MODULE_NAME="MODULE_NAME"
 DEVELOPER="DEVELOPER_NAME"
 
@@ -30,7 +30,7 @@ echo ""
 EXIT_CODE=$?
 
 # ===== RESULT =====
-if [[ $? -eq 0 ]]; then
+if [[ $EXIT_CODE -eq 0 ]]; then
     echo ""
     echo -e "${GREEN}[$MODULE_NAME] Update completed${RESET}"
 else
