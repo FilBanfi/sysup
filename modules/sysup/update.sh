@@ -8,11 +8,12 @@ RESET="\033[0m"
 
 VERSION="0.2.0"
 MODULE_NAME="MODULE_NAME"
+DEVELOPER="FilBanfi"
 
 # ===== HEADER =====
 echo -e "${YELLOW}======================================"
 echo -e "      $MODULE_NAME MODULE v$VERSION"
-echo -e "           by [developer name]"
+echo -e "           by $DEVELOPER"
 echo -e "======================================${RESET}"
 
 echo -e "${YELLOW}[$MODULE_NAME] Starting update...${RESET}"
