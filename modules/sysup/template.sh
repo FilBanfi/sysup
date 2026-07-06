@@ -6,13 +6,14 @@ RED="\033[31m"
 YELLOW="\033[33m"
 RESET="\033[0m"
 
-VERSION="0.1.1"
+VERSION="0.2"
 MODULE_NAME="MODULE_NAME"
+DEVELOPER="DEVELOPER_NAME"
 
 # ===== HEADER =====
 echo -e "${YELLOW}======================================"
 echo -e "      $MODULE_NAME MODULE v$VERSION"
-echo -e "           by [developer name]"
+echo -e "           by $DEVELOPER"
 echo -e "======================================${RESET}"
 
 echo -e "${YELLOW}[$MODULE_NAME] Starting update...${RESET}"
@@ -23,6 +24,10 @@ echo ""
 # insert commands here
 # example:
 # sudo dnf upgrade -y
+
+# ===== CHECK =====
+
+EXIT_CODE=$?
 
 # ===== RESULT =====
 if [[ $? -eq 0 ]]; then
