@@ -6,7 +6,7 @@ RED="\033[31m"
 YELLOW="\033[33m"
 RESET="\033[0m"
 
-VERSION="1.0"
+VERSION="0.2.0"
 
 INSTALL_DIR="$HOME/.local/share/sysup"
 BIN_DIR="$HOME/.local/bin"
@@ -30,6 +30,17 @@ mkdir -p "$BIN_DIR"
 # ===== COPY FILES =====
 echo -e "${YELLOW}[COPY] Installing files...${RESET}"
 cp -r ./* "$INSTALL_DIR"
+
+# ===== VERIFY INSTALLATION =====
+if [[ ! -d "$INSTALL_DIR/modules" ]]; then
+    echo -e "${RED}[ERROR] Installation failed: modules directory missing${RESET}"
+    exit 1
+fi
+
+if [[ ! -f "$INSTALL_DIR/update.sh" ]]; then
+    echo -e "${RED}[ERROR] Installation failed: update.sh missing${RESET}"
+    exit 1
+fi
 
 # ===== CONFIG INIT =====
 echo -e "${YELLOW}[CONF] Initializing configuration...${RESET}"
@@ -57,6 +68,17 @@ echo -e "${YELLOW}[LINK] Creating commands...${RESET}"
 
 ln -sf "$INSTALL_DIR/update.sh" "$BIN_DIR/sysup"
 ln -sf "$INSTALL_DIR/uninstall.sh" "$BIN_DIR/sysup-remove"
+
+# ===== VERIFY INSTALLATION =====
+if [[ ! -d "$INSTALL_DIR/modules" ]]; then
+    echo -e "${RED}[ERROR] Installation failed: modules directory missing${RESET}"
+    exit 1
+fi
+
+if [[ ! -f "$INSTALL_DIR/update.sh" ]]; then
+    echo -e "${RED}[ERROR] Installation failed: update.sh missing${RESET}"
+    exit 1
+fi
 
 # ===== CHECK PATH =====
 if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
