@@ -7,10 +7,11 @@ YELLOW="\033[33m"
 RESET="\033[0m"
 
 APP_NAME="sysup"
-VERSION="0.1.0"
+VERSION="0.1.1"
 
-CONFIG_FILE="plugin.conf"
-MODULES_DIR="modules"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_FILE="$SCRIPT_DIR/plugin.conf"
+MODULES_DIR="$SCRIPT_DIR/modules"
 LOCK_FILE="/tmp/sysup.lock"
 
 # ===== HEADER =====
