@@ -6,7 +6,7 @@ RED="\033[31m"
 YELLOW="\033[33m"
 RESET="\033[0m"
 
-VERSION="0.2.0"
+VERSION="0.3.0"
 
 INSTALL_DIR="$HOME/.local/share/sysup"
 BIN_DIR="$HOME/.local/bin"
@@ -82,9 +82,33 @@ fi
 
 # ===== CHECK PATH =====
 if [[ ":$PATH:" != *":$BIN_DIR:"* ]]; then
-    echo -e "${YELLOW}[WARN] $BIN_DIR not in PATH${RESET}"
-    echo "Add it with:"
-    echo "export PATH=\"$BIN_DIR:\$PATH\""
+    echo -e "${YELLOW}[PATH] Configuring PATH for seamless usage...${RESET}"
+    
+    # Lista dei file di configurazione più comuni (copre il 99% degli utenti Linux)
+    RC_FILES=("$HOME/.bashrc" "$HOME/.zshrc")
+    ADDED=0
+    
+    for rc_file in "${RC_FILES[@]}"; do
+        if [[ -f "$rc_file" ]]; then
+            # Controlla se la riga esiste già per evitare duplicati
+            if ! grep -q "export PATH=\"$BIN_DIR:\$PATH\"" "$rc_file" 2>/dev/null; then
+                echo "" >> "$rc_file"
+                echo "# Added by sysup installer" >> "$rc_file"
+                echo "export PATH=\"$BIN_DIR:\$PATH\"" >> "$rc_file"
+                echo -e "${GREEN}[PATH] Added to $(basename "$rc_file")${RESET}"
+                ADDED=1
+            fi
+        fi
+    done
+    
+    if [[ $ADDED -eq 0 ]]; then
+        echo -e "${YELLOW}[WARN] No .bashrc or .zshrc found. Please add $BIN_DIR to your PATH manually.${RESET}"
+    else
+        # Applica il PATH alla sessione corrente immediatamente
+        export PATH="$BIN_DIR:$PATH"
+    fi
+else
+    echo -e "${GREEN}[PATH] $BIN_DIR is already in PATH${RESET}"
 fi
 
 echo ""
