@@ -6,7 +6,7 @@ RED="\033[31m"
 YELLOW="\033[33m"
 RESET="\033[0m"
 
-VERSION="0.2.2"
+VERSION="0.2.3"
 MODULE_NAME="SYSUP"
 DEVELOPER="FilBanfi"
 
@@ -36,6 +36,7 @@ if [[ ! -f "plugin.conf" ]]; then
 fi
 
 git pull
+EXIT_CODE=$?
 
 # ===== RESULT =====
 if [[ $EXIT_CODE -eq 0 ]]; then
